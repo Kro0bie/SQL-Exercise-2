@@ -1,0 +1,52 @@
+select count(id) as 'Number of Countries'
+from countries;
+
+select sum (population) as 'Total Pop. of Oceania'
+from population_years
+join countries
+on countries.id = population_years.country_id
+where continent = 'Oceania' 
+and
+year = 2005;
+
+select round (avg (population), 2) as 'Average Population of South America'
+from population_years
+join countries
+on countries.id = population_years.country_id
+where continent = 'South America' 
+and
+year = 2003;
+
+select name as 'Name of Country with', population as 'the Lowest Population in 2007'
+from population_years
+join countries
+on countries.id = population_years.country_id
+where population is not Null
+and 
+year = 2007
+order by 2 asc
+limit 1;
+
+
+
+Select name as 'Country', round(avg(population), 2) as 'Average Population'
+from population_years
+join countries
+on countries.id = population_years.country_id
+where name = 'Poland';
+
+select count (distinct name) as 'Number of Countries that have The in their name' 
+from population_years
+join countries
+on countries.id = population_years.country_id
+where name like '%The';
+
+select continent, round (sum (population_years.population),2) as 'Total Population in 2010'
+from population_years
+join countries
+on countries.id = population_years.country_id
+where year = 2010
+group by continent;
+
+
+
